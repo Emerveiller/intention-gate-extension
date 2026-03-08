@@ -182,5 +182,6 @@ MIT License - Feel free to modify and share!
 
 ---
 
-**Remember**: The goal isn't to block sites, but to make browsing **intentional** instead of mindless. Your brain is a prediction machine - give it clear predictions to work with! 🧠✨
+**Remember**: The goal isn't to block sites, but to make browsing **intentional** instead of mindless. Your brain is a prediction machine - give it clear predictions to work with!
+
 
