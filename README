@@ -1,0 +1,185 @@
+# Intention Gate - Neuroscience-Based Mindful Browsing Extension
+
+## Overview
+
+This Chrome extension implements a **neuroscience-based pattern interrupt** designed specifically for ADHD brains and anyone struggling with mindless browsing. Instead of passively asking "Are you sure?", it **forces active cognitive engagement** through an "Intention Gate" that requires you to declare your specific goal before accessing distracting websites.
+
+## The Science Behind It
+
+### 1. **Perceptual Decoupling Break** (High-Salience Visual Interruption)
+
+- **Problem**: ADHD brains "uncouple" from visual sensory input during mind-wandering
+- **Solution**: Full-screen, high-contrast gradient overlay that forces the brain to "wake up" and re-process the environment
+- **Implementation**: Dramatic color shift from dark gradient (navy → deep blue) to bright modal
+
+### 2. **Task Positive Network (TPN) Activation** (Active Language Generation)
+
+- **Problem**: Passive timers or yes/no questions allow autopilot responses
+- **Solution**: Text input field requiring 4+ characters to describe your intention
+- **Implementation**:
+  - Input field with disabled "Continue" button until minimum characters typed
+  - Cannot rely on basal ganglia (autopilot) - must engage prefrontal cortex (PFC) to formulate coherent goal
+  - Forces brain to switch from DMN (daydreaming) to TPN (focused planning)
+
+### 3. **Proactive Control Support** (Goal Maintenance)
+
+- **Problem**: ADHD dorsolateral PFC struggles to hold rules/goals in mind over time
+- **Solution**: Persistent intention display that remains visible
+- **Implementation**:
+  - Sticky banner at top of page showing your declared intention
+  - Page title updated to include your goal
+  - Creates continuous "Prediction Error" if behavior doesn't match stated intent
+
+### 4. **Prediction Error Mechanism** (Conflict Detection)
+
+- **Problem**: Brain's prediction machine needs feedback on plan vs. reality mismatches
+- **Solution**: When stated intention ("check email") conflicts with actual behavior (watching YouTube), the anterior cingulate cortex (ACC) triggers focus alarm
+- **Implementation**: Visible goal reminder creates cognitive dissonance when you drift off-task
+
+### 5. **Anti-Habituation Design** (Prevents Mindless Patterns)
+
+- **Problem**: Passive waits or repeated prompts become automatic habits
+- **Solution**: Requires generating NEW text each time - cannot become mindless routine
+- **Implementation**: Each visit requires fresh cognitive effort to articulate intention
+
+## Key Features Implemented
+
+✅ **Full-screen visual interruption** - High-contrast gradient overlay  
+✅ **Mandatory intention declaration** - Must type 4+ characters to proceed  
+✅ **Disabled button until input** - Forces prefrontal cortex engagement  
+✅ **Persistent intention banner** - Stays visible at top of page  
+✅ **Updated page title** - Goal embedded in browser tab
+
+## Installation Instructions
+
+### For Chrome/Chromium Browsers:
+
+1. **Download the files**
+   - Save `manifest.json`, `content.js`, and `styles.css` to a folder (e.g., `intention-gate-extension`)
+
+2. **Enable Developer Mode**
+   - Open Chrome and go to `chrome://extensions/`
+   - Toggle "Developer mode" ON (top-right corner)
+
+3. **Load the extension**
+   - Click "Load unpacked"
+   - Select the folder containing your extension files
+   - The extension should now appear in your extensions list
+
+4. **Test it**
+   - Visit any configured site (YouTube, Reddit, Twitter, etc.)
+   - You should see the Intention Gate prompt
+
+### Add More Websites
+
+Edit `manifest.json` to include additional sites:
+
+```json
+"matches": [
+  "*://*.youtube.com/*",
+  "*://*.reddit.com/*",
+  "*://*.yoursite.com/*"
+]
+```
+
+### Adjust Minimum Character Count
+
+In `content.js`, find this line:
+
+```javascript
+if (length >= 4) {
+```
+
+Change `4` to your preferred minimum (e.g., `6` for more detailed intentions)
+
+### Change Color Scheme
+
+In `styles.css`, modify the gradient overlay:
+
+```css
+background: linear-gradient(135deg, #YOUR_COLOR_1 0%, #YOUR_COLOR_2 100%);
+```
+
+### Modify Button Colors
+
+Find these sections in `styles.css`:
+
+- `.btn-cancel` - Cancel button styling
+- `.btn-continue.enabled` - Continue button when active
+- `#intention-banner` - Persistent banner styling
+
+## Technical Architecture
+
+### Files:
+
+- **manifest.json** - Extension configuration
+- **content.js** - Core logic and DOM manipulation
+- **styles.css** - Visual design and animations
+
+### Key Functions:
+
+1. `showIntentionGate()` - Main entry point, creates overlay
+2. `setupInteractions()` - Handles input validation and button states
+3. `handleContinue()` - Processes intention and creates persistent reminders
+4. `createIntentionBanner()` - Generates sticky banner with goal
+5. `updatePageTitle()` - Embeds intention in browser tab title
+
+### Data Flow:
+
+```
+Page Load → Overlay Appears → User Types → Button Enables →
+User Continues → Modal Removes → Banner Creates → Title Updates
+```
+
+## Browser Compatibility
+
+- ✅ Chrome (v88+)
+- ✅ Edge (v88+)
+- ✅ Brave (v1.20+)
+- ✅ Opera (v74+)
+- ⚠️ Firefox (requires Manifest V2 conversion)
+- ❌ Safari (requires different extension format)
+
+## Privacy & Security
+
+- **No data collection** - Everything runs locally
+- **No network requests** - No external API calls
+- **Session storage only** - Data cleared when tab closes
+- **No permissions required** - Only content scripts on specified sites
+
+## Neuroscience Citations & Background
+
+This implementation is based on research into:
+
+- **Default Mode Network (DMN)** - Brain's "daydreaming" network
+- **Task Positive Network (TPN)** - Brain's "focused work" network
+- **Dorsolateral Prefrontal Cortex (dlPFC)** - Goal maintenance and planning
+- **Anterior Cingulate Cortex (ACC)** - Conflict detection and error monitoring
+- **Predictive Processing** - Brain as prediction machine minimizing "free energy"
+- **Perceptual Decoupling** - Disconnection from sensory input during mind-wandering
+- **Proactive Control** - Maintaining task goals over time (weak in ADHD)
+
+Key insight: **ADHD is a "glitchy switch"** between DMN and TPN. This extension mechanically forces the TPN to activate through language generation, which suppresses DMN intrusion.
+
+## Future Enhancements (Optional)
+
+- [ ] Statistics dashboard showing intentions vs. actual time
+- [ ] Customizable site list via popup interface
+- [ ] Intention history/patterns analysis
+- [ ] Integration with productivity tools
+- [ ] Time-based reminders (e.g., "Still working on X?")
+- [ ] Exportable intention journal
+
+## Credits
+
+**Neuroscience Principles**: Based on ADHD research on DMN/TPN switching, predictive processing, and proactive control deficits
+
+**Design Philosophy**: High-salience interruption + forced cognitive engagement + persistent goal maintenance
+
+## License
+
+MIT License - Feel free to modify and share!
+
+---
+
+**Remember**: The goal isn't to block sites, but to make browsing **intentional** instead of mindless. Your brain is a prediction machine - give it clear predictions to work with! 🧠✨

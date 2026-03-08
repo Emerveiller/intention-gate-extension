@@ -1,0 +1,418 @@
+/* ===================================
+   INTENTION GATE - NEUROSCIENCE-BASED PATTERN INTERRUPT
+   High-salience visual disruption with refined aesthetics
+   =================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:wght@400;600&display=swap");
+
+/* === FULL-SCREEN OVERLAY (High Salience Visual Interruption) === */
+#intention-gate-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  /* High-contrast solid gradient - NO transparency */
+  background: linear-gradient(
+    135deg,
+    #1a1a2e 0%,
+    #16213e 50%,
+    #0f3460 100%
+  ) !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-family: "Crimson Pro", serif !important;
+
+  /* Subtle animated grain texture for depth */
+  background-image:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 255, 255, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 50%
+    ) !important;
+
+  /* Ensure it covers everything */
+  pointer-events: auto !important;
+  visibility: visible !important;
+}
+
+/* === MODAL CONTAINER === */
+#intention-gate-modal {
+  position: relative !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  padding: 48px 56px 40px !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  text-align: center !important;
+  max-width: 520px !important;
+  width: 90% !important;
+  animation: slideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  backdrop-filter: blur(20px) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(40px) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* === DECORATIVE PULSE ELEMENT === */
+.pulse-circle {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 0 rgba(102, 126, 234, 0.7),
+    0 8px 24px rgba(102, 126, 234, 0.4);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(102, 126, 234, 0.7),
+      0 8px 24px rgba(102, 126, 234, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 0 20px rgba(102, 126, 234, 0),
+      0 8px 24px rgba(102, 126, 234, 0.4);
+  }
+}
+
+/* === TYPOGRAPHY === */
+#intention-gate-modal h1 {
+  margin: 0 0 8px 0;
+  color: #1a1a2e;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-family: "Crimson Pro", serif;
+}
+
+.subtitle {
+  color: #4a5568;
+  font-size: 18px;
+  margin: 0 0 32px 0;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.help-text {
+  margin: 24px 0 0 0;
+  color: #718096;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* === INPUT CONTAINER === */
+.input-container {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+#intention-input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 16px;
+  font-family: "Space Mono", monospace;
+  color: #1a1a2e;
+  background: rgba(247, 250, 252, 0.8);
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  letter-spacing: 0.01em;
+}
+
+#intention-input:focus {
+  background: white;
+  border-color: #667eea;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.05),
+    0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+#intention-input::placeholder {
+  color: #a0aec0;
+}
+
+.char-counter {
+  position: absolute;
+  right: 12px;
+  bottom: -24px;
+  font-size: 12px;
+  font-family: "Space Mono", monospace;
+  color: #a0aec0;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+#char-count {
+  color: #667eea;
+  font-weight: 700;
+}
+
+/* === BUTTONS === */
+.button-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.btn {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: "Crimson Pro", serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn svg {
+  position: relative;
+  z-index: 1;
+}
+
+.btn span,
+.btn::after {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cancel Button */
+.btn-cancel {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(45, 55, 72, 0.3);
+}
+
+.btn-cancel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 55, 72, 0.4);
+}
+
+.btn-cancel:active {
+  transform: translateY(0);
+}
+
+/* Continue Button - Initially Disabled */
+.btn-continue {
+  background: linear-gradient(135deg, #cbd5e0 0%, #a0aec0 100%);
+  color: #718096;
+  box-shadow: 0 4px 12px rgba(160, 174, 192, 0.2);
+  cursor: not-allowed;
+}
+
+/* Continue Button - Enabled State */
+.btn-continue.enabled {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-continue.enabled:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(102, 126, 234, 0.5);
+}
+
+.btn-continue.enabled:active {
+  transform: translateY(0);
+}
+
+/* === PERSISTENT INTENTION BANNER === */
+#intention-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.95) 0%,
+    rgba(118, 75, 162, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  padding: 14px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2147483646;
+  font-family: "Crimson Pro", serif;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#intention-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@keyframes slideOut {
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.banner-content svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.banner-text {
+  flex: 1;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+.banner-text strong {
+  font-weight: 600;
+  font-family: "Space Mono", monospace;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 4px;
+}
+
+.banner-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.banner-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.banner-close:active {
+  transform: scale(0.95);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 600px) {
+  #intention-gate-modal {
+    padding: 36px 28px 32px;
+    width: 95%;
+  }
+
+  #intention-gate-modal h1 {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #intention-banner {
+    padding: 12px 16px;
+  }
+
+  .banner-text {
+    font-size: 14px;
+  }
+}
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  #intention-gate-modal {
+    border: 3px solid #000;
+  }
+
+  #intention-input {
+    border-width: 3px;
+  }
+}

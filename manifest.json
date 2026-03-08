@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Intention Gate - Mindful Browsing",
+  "version": "2.0",
+  "description": "Neuroscience-based pattern interrupt that requires you to declare your specific intention before visiting distracting sites.",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.reddit.com/*",
+        "*://*.facebook.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.instagram.com/*",
+        "*://*.tiktok.com/*",
+        "*://*.twitch.tv/*",
+        "*://*.netflix.com/*"
+      ],
+      "css": ["styles.css"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [],
+  "host_permissions": []
+}
